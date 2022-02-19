@@ -3,7 +3,6 @@ class Employee {
   public $name;
   // public $state = '労働中';
   private $state = '労働中';
-  public static $company = 'HOGE & co';
   public function getState() {
     return $this->state;
   }
@@ -14,8 +13,14 @@ class Employee {
     echo `${name}はEmployeeクラスのworkメソッドとして働いています` . PHP_EOL;
     // echo `${name}はEmployeeクラスのworkメソッドとして${state}` . PHP_EOL;
   }
-  public function getCompany() {
+
+  public static $company = 'HOGE & co';
+  // public function getCompany() {
+  public static function getCompany() {
     return self::$company;
+  }
+  public static function setCompany($value) {
+    self::$company = $value;
   }
 }
 
@@ -28,4 +33,8 @@ echo $taro->name , 'さんは' , $taro->getState() , PHP_EOL;
 
 // echo '我々は', Employee::$company, 'の従業員です';
 
-echo $taro->getCompany();
+// echo $taro->getCompany();
+
+echo Employee::getCompany();
+Employee::setCompany('FUGA.co');
+echo Employee::getCompany();
