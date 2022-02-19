@@ -22,10 +22,21 @@ class Employee {
   public static function setCompany($value) {
     self::$company = $value;
   }
+
+  const PARTTIME = 0x01;
+  const REGULAR  = 0x02;
+  const CONTRACT = 0x04;
+  private $type;
+
+  public function __construct($name, $type) {
+    $this->name = $name;
+    $this->type = $type;
+  }
 }
 
-$taro = new Employee;
-$taro->name = '田中';
+// $taro = new Employee;
+$taro = new Employee('初期化', Employee::REGULAR);
+// $taro->name = '田中';
 // echo $taro->state;
 // $taro->work($taro->name);
 $taro->setState('働きたくない');
