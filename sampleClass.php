@@ -44,7 +44,6 @@ class Employee {
 
 // $taro = new Employee;
 $taro = new Employee('初期化', Employee::REGULAR);
-
 echo $taro->getSalary();
 // $taro->name = '田中';
 // echo $taro->state;
