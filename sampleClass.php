@@ -35,10 +35,17 @@ class Employee {
     $this->name = $name;
     $this->type = $type;
   }
+
+  public $salary = 30;
+  public final function getSalary() {
+    return $this->salary;
+  }
 }
 
 // $taro = new Employee;
 $taro = new Employee('初期化', Employee::REGULAR);
+
+echo $taro->getSalary();
 // $taro->name = '田中';
 // echo $taro->state;
 // $taro->work($taro->name);
@@ -52,6 +59,7 @@ $taro->setState('働きたくない');
 echo Employee::getCompany();
 Employee::setCompany('FUGA.co');
 echo Employee::getCompany();
+
 
 class Programmer extends Employee {
   public function __construct($name, $type)
