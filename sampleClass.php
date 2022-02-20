@@ -1,7 +1,8 @@
 <?php
 class Employee {
-  public $name;
+  // public $name;
   // private $name;
+  protected $name;
 
   // public $state = '労働中';
   private $state = '労働中';
@@ -11,8 +12,8 @@ class Employee {
   public function setState($state) {
     $this->state = $state;
   }
-  public function work($name) {
-    echo `${name}はEmployeeクラスのworkメソッドとして働いています` . PHP_EOL;
+  public function work() {
+    echo self::$name , 'はEmployeeクラスのworkメソッドとして働いています' . PHP_EOL;
     // echo `${name}はEmployeeクラスのworkメソッドとして${state}` . PHP_EOL;
   }
 
@@ -42,7 +43,7 @@ $taro = new Employee('初期化', Employee::REGULAR);
 // echo $taro->state;
 // $taro->work($taro->name);
 $taro->setState('働きたくない');
-echo $taro->name , 'さんは' , $taro->getState() , PHP_EOL;
+// echo $taro->name , 'さんは' , $taro->getState() , PHP_EOL;
 
 // echo '我々は', Employee::$company, 'の従業員です';
 
@@ -57,10 +58,11 @@ class Programmer extends Employee {
   {
     parent::__construct($name, $type);
   }
-  public function work($name) {
-    echo $name , 'はコードを書いている' , PHP_EOL;
+  public function work() {
+    // echo $this->name , 'はコードを書いている' , PHP_EOL;
+    echo self::$name , 'はコードを書いている' , PHP_EOL;
   }
 }
 
 $kana = new Programmer('カナ', Employee::REGULAR);
-$kana->work($kana->name);
+$kana->work();
