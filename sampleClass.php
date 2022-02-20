@@ -1,7 +1,7 @@
 <?php
 class Employee {
-  // public $name;
-  private $name;
+  public $name;
+  // private $name;
 
   // public $state = '労働中';
   private $state = '労働中';
@@ -51,3 +51,16 @@ echo $taro->name , 'さんは' , $taro->getState() , PHP_EOL;
 echo Employee::getCompany();
 Employee::setCompany('FUGA.co');
 echo Employee::getCompany();
+
+class Programmer extends Employee {
+  public function __construct($name, $type)
+  {
+    parent::__construct($name, $type);
+  }
+  public function work($name) {
+    echo $name , 'はコードを書いている' , PHP_EOL;
+  }
+}
+
+$kana = new Programmer('カナ', Employee::REGULAR);
+$kana->work($kana->name);
