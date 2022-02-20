@@ -1,8 +1,13 @@
 <?php
-$path = 'sampleNamespace';
-require_once $path . '.php';
+// $path = 'sampleNamespace';
+// require_once $path . '.php';
+require_once 'sampleNamespace.php';
 
-$sample_class = new Food\Sweets\Cake();
+use Food\Sweets as Sweets;
+
+$sample_class = new Sweets\Cake();
+
+// $sample_class = new Food\Sweets\Cake();
 $sample_class->product();
 
 Food\Sweets\Cake::price();
