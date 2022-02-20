@@ -1,6 +1,8 @@
 <?php
 class Employee {
-  public $name;
+  // public $name;
+  private $name;
+
   // public $state = '労働中';
   private $state = '労働中';
   public function getState() {
