@@ -43,17 +43,34 @@ class Request
     return $default;
   }
 
-    /**
-   * HTTP POST メソッドから渡される連想配列
-   * https://www.php.net/manual/ja/reserved.variables.post.php
+  /**
+   * ホスト名を取得
+   * https://www.php.net/manual/ja/reserved.variables.server.php
    */
-  public function getHost( $name, $default = null )
+  public function getHost()
   {
-    if ( isset( $_POST[$name] ) ) {
-      return $_POST[$name];
+    if ( !empty( $_SERVER[ 'HTTP_HOST' ] ) ) {
+      return $_SERVER[ 'HTTP_HOST' ];
     }
 
-    return $default;
+    return $_SERVER[ 'SERVER_NAME' ];
+  }
+
+  /**
+   * SSL化の判定
+   */
+  public function isSsl()
+  {
+    if ( isset( $_SERVER[ 'HTTPS' ] ) && $_SERVER[ 'HTTPS' ] === 'on' ) {
+      return true;
+    }
+
+    return false;
+  }
+
+  public function getRequestUri()
+  {
+    return $_SERVER[ 'REQUEST_URI' ];
   }
 
 }
