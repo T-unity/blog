@@ -13,6 +13,8 @@
   // var_dump($_SERVER["SCRIPT_NAME"]);
   // var_dump($_SERVER[ 'REQUEST_URI' ]);
 
+  var_dump( __FILE__ );
+
   // var_dump($req->getGet('get'));
   // var_dump($req->getRequestUri());
   var_dump($req->getBaseUrl());
