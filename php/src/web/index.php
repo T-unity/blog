@@ -1,6 +1,8 @@
 <?php
   echo '<h1>' . 'Document root' . '</h1>';
 
+  require( '../bootstrap.php' );
+
   require( '../core/Request.php' );
 
   $req = new Request();
