@@ -26,5 +26,5 @@ services:
       - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
       - ./php/src:/usr/share/php/src
     restart: always
-    ports: ["8080:80"]
+    ports: ["80:80"]
     depends_on: ["php"]
