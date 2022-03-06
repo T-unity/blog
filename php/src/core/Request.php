@@ -70,7 +70,31 @@ class Request
 
   public function getRequestUri()
   {
+    // $_SERVER["REQUEST_URI"]::ページにアクセスするために指定された URI。例えば、 '/index.html'
     return $_SERVER[ 'REQUEST_URI' ];
+  }
+
+  /**
+   * ホスト名以降の、特定のindex.phpまでのpathを特定する
+   */
+  public function getBaseUrl()
+  {
+    // $_SERVER["SCRIPT_NAME"]::現在のスクリプトのパス。 スクリプト自身のページを指定するのに有用です。
+    $script_name = $_SERVER["SCRIPT_NAME"];
+    $request_uri = $this->getRequestUri();
+
+    /**
+     * https://www.php.net/manual/ja/function.strpos.php
+     */
+    if ( strpos( $request_uri, $script_name ) === 0 ) {
+      return $script_name;
+    } elseif ( strpos( $request_uri, dirname( $script_name ) ) ) {
+      return rtrim( dirname( $script_name ), '/' );
+      // https://www.php.net/manual/ja/function.dirname.php
+      // https://www.php.net/manual/ja/function.rtrim.php
+    }
+
+    return '';
   }
 
 }

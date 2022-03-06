@@ -10,9 +10,11 @@
   // var_dump($_GET);
   // var_dump($_POST);
   // var_dump($_SERVER);
-  var_dump($_SERVER["SCRIPT_NAME"]);
+  // var_dump($_SERVER["SCRIPT_NAME"]);
+  // var_dump($_SERVER[ 'REQUEST_URI' ]);
 
   // var_dump($req->getGet('get'));
   // var_dump($req->getRequestUri());
+  var_dump($req->getBaseUrl());
 
   echo '</pre>';
