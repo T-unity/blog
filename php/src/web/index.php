@@ -3,7 +3,7 @@
 
   require( '../bootstrap.php' );
 
-  require( '../core/Request.php' );
+  // require( '../core/Request.php' );
 
   $req = new Request();
 
@@ -17,6 +17,7 @@
 
   var_dump( __FILE__ );
 
+  var_dump($req);
   // var_dump($req->getGet('get'));
   // var_dump($req->getRequestUri());
   var_dump($req->getBaseUrl());
