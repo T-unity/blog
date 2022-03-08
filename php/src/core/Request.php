@@ -83,9 +83,6 @@ class Request
     $script_name = $_SERVER["SCRIPT_NAME"];
     $request_uri = $this->getRequestUri();
 
-    /**
-     * https://www.php.net/manual/ja/function.strpos.php
-     */
     if ( strpos( $request_uri, $script_name ) === 0 ) {
       return $script_name;
     } elseif ( strpos( $request_uri, dirname( $script_name ) ) ) {
@@ -95,6 +92,24 @@ class Request
     }
 
     return '';
+  }
+
+  public function getPathInfo()
+  {
+    $base_url = $this->getBaseUrl();
+    $request_uri = $this->getRequestUri();
+    // GETメソッドで、?以降に付与されたクエリ
+    // $pos = strpos( $request_uri, '?' );
+
+    // if ( $pos !== false ) {
+    if ( false !== ( $pos = strpos( $request_uri, '?' ) ) ) {
+      $request_uri = substr( $request_uri, 0, $pos );
+      // https://www.php.net/manual/ja/function.strlen.php
+    }
+
+    $path_info = (string)substr( $request_uri, strlen($base_url) );
+
+    return $path_info;
   }
 
 }

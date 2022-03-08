@@ -1,11 +1,41 @@
 <?php
+  require( '../bootstrap.php' );
+  $req = new Request();
+
   echo '<h1>' . 'Document root' . '</h1>';
 
-  require( '../bootstrap.php' );
+
+  /////////////////////////////////
+  // strposの挙動を確認
+  // https://www.php.net/manual/ja/function.strpos.php
+  $haystack = 'abcdefgh';
+  // 以下のニードルは、いずれで比較してもint(1)が返ってくる
+  // $needle = 'b';
+  // $needle = 'bc';
+  $needle = 'bcd';
+  $check = strpos( $haystack, $needle );
+  echo '<pre>';
+  var_dump($check);
+  echo '</pre>';
+  echo '------------------' . "\n";
+  /////////////////////////////////
+
+  /////////////////////////////////
+  // substrの挙動を確認
+  // https://www.php.net/manual/ja/function.substr.php
+  // $string = substr("abcdef", -1);
+  // $string = substr("abcdef", 1);
+  // $string = substr("123456789", 1);
+  // $string = substr("123456789", -4, 2);
+  // $string = substr("123456789", -10, );
+  $string = substr("123456789", 10, );
+  echo '<pre>';
+  var_dump($string);
+  echo '</pre>';
+  /////////////////////////////////
+
 
   // require( '../core/Request.php' );
-
-  $req = new Request();
 
   echo '<pre>';
 
