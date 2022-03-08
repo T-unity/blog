@@ -1,4 +1,6 @@
 <?php
+session_start();
+
   require( '../bootstrap.php' );
   $req = new Request();
 
@@ -38,6 +40,28 @@
   // require( '../core/Request.php' );
 
   echo '<pre>';
+
+  /////////////////////////////////
+  // COOKIE
+  echo '<h2>' . 'Cookie' . '</h2>';
+  echo '<pre>';
+  var_dump($_COOKIE);
+  echo '</pre>';
+  echo '------------------' . "\n";
+  /////////////////////////////////
+
+  /////////////////////////////////
+  // SESSION
+  echo '<h2>' . 'Session' . '</h2>';
+  echo '<pre>';
+  // session_start();
+  // どこで定義しても良いわけじゃないっぽい
+  // Warning:  session_start(): Session cannot be started after headers have already been sent in
+  var_dump($_SESSION);
+  echo '</pre>';
+  echo '------------------' . "\n";
+  /////////////////////////////////
+
 
   // var_dump($_GET);
   // var_dump($_POST);
