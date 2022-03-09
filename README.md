@@ -17,11 +17,14 @@ MySQLクライアント使ってもOK。
 # 権限周り怪しいので確認する
 
  - DB作成
-   
+
 （コンテナにログインしてるの前提）
 ```
 mysql -u root
-mysql> CREATE DATABASE `some_db_name_ex_hoge` DEFAULT CHARACTER SET utf8;
+// mysql> CREATE DATABASE `some_db_name_ex_hoge` DEFAULT CHARACTER SET utf8mb4;
+
+e.g)
+mysql> CREATE DATABASE `post` DEFAULT CHARACTER SET utf8mb4;
 ```
 
  - テーブル作成
@@ -34,14 +37,21 @@ CREATE TABLE `post` (
   name VARCHAR(50),
   content VARCHAR(200),
   created_at DATETIME,
-) engine=innodb default charset=utf8';
+) engine=innodb default charset=utf8mb4';
 ```
 上で作った`some_db_name_ex_hoge`を開いて上のSQLを入力する。
 
 ```
 mysql -u root some_db_name_ex_hoge
-mysql> 上記のSQLを入力 
+mysql> 上記のSQLを入力
 ```
 
 ## phpコンテナに入る（ほぼ入らない）
 $ docker compose exec php bash
+
+## webサーバー系
+
+srcフォルダがphpの中にあるのは構造的にイケてないのでdocker-compose.ymlと同じ階層にある構造の方が違和感少ない。
+
+Nginxのconfをいじる必要がある。いじったら一旦docker compose downしてからもっかいdocker compose up -d --buildする。
+なんかおかしいと思ったらとりあえず一回落としてもっかいビルドしてみる。
