@@ -14,8 +14,6 @@ MySQLクライアント使ってもOK。
 
 ## DB、テーブル作成
 
-# 権限周り怪しいので確認する
-
  - DB作成
 
 （コンテナにログインしてるの前提）
@@ -38,6 +36,14 @@ CREATE TABLE `post` (
   content VARCHAR(200),
   created_at DATETIME,
 ) engine=innodb default charset=utf8mb4';
+
+上のSQLはちと微妙なのでとりあえず以下で。
+
+CREATE TABLE `post_t` (
+  `pst_id` int NOT NULL PRIMARY KEY,
+  `pst_name` text
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 ```
 上で作った`some_db_name_ex_hoge`を開いて上のSQLを入力する。
 
