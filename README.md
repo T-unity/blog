@@ -40,7 +40,7 @@ CREATE TABLE `post` (
 上のSQLはちと微妙なのでとりあえず以下で。
 
 CREATE TABLE `post_t` (
-  `pst_id` int NOT NULL PRIMARY KEY,
+  `pst_id` int NOT NULL auto_increment PRIMARY KEY,
   `pst_name` text
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -51,6 +51,8 @@ CREATE TABLE `post_t` (
 mysql -u root some_db_name_ex_hoge
 mysql> 上記のSQLを入力
 ```
+
+※たぶん何かしらのSQLクライアント使った方が便利
 
 ## phpコンテナに入る（ほぼ入らない）
 $ docker compose exec php bash
