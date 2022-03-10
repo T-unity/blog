@@ -36,9 +36,11 @@ CREATE TABLE `post` (
   content VARCHAR(200),
   created_at DATETIME,
 ) engine=innodb default charset=utf8mb4';
+```
 
 上のSQLはちと微妙なのでとりあえず以下で。
 
+```
 CREATE TABLE `post_t` (
   `pst_id` int NOT NULL auto_increment PRIMARY KEY,
   `pst_name` text
