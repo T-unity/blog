@@ -1,3 +1,7 @@
+
+
+<details>
+
 ## コマンドとか
 
 ## DBに接続
@@ -63,3 +67,5 @@ srcフォルダがphpの中にあるのは構造的にイケてないのでdocke
 
 Nginxのconfをいじる必要がある。いじったら一旦docker compose downしてからもっかいdocker compose up -d --buildする。
 なんかおかしいと思ったらとりあえず一回落としてもっかいビルドしてみる。
+
+</details>
