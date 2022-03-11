@@ -36,6 +36,9 @@ abstract class Application
         $this->router     = new Router($this->registerRoutes());
     }
 
+    /**
+     * 各
+     */
     protected function configure()
     {
     }
