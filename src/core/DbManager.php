@@ -6,25 +6,29 @@ class DbManager
     protected $repository_connection_map = array();
     protected $repositories = array();
 
-    public function connect($name, $params)
+    /**
+     * PDOによる接続を確立する
+     */
+    public function connect( string $name, array $params )
     {
-        $params = array_merge(array(
-            'dsn'      => null,
-            'user'     => '',
-            'password' => '',
-            'options'  => array(),
-        ), $params);
+      $params = array_merge( array(
+        'dsn'      => null,
+        'user'     => '',
+        'password' => '',
+        'options'  => array(),
+      ), $params );
 
-        $con = new PDO(
-            $params['dsn'],
-            $params['user'],
-            $params['password'],
-            $params['options']
-        );
+      $con = new PDO(
+        $params['dsn'],
+        $params['user'],
+        $params['password'],
+        $params['options']
+      );
 
-        $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      // https://www.php.net/manual/ja/pdo.setattribute.php
+      $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $this->connections[$name] = $con;
+      $this->connections[$name] = $con;
     }
 
     public function getConnection($name = null)

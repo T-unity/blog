@@ -8,14 +8,21 @@ abstract class Application
     protected $session;
     protected $db_manager;
 
-    public function __construct($debug = false)
+
+    /**
+     * デバッグ情報の出力有無を制御する
+     */
+    public function __construct(bool $debug = false )
     {
         $this->setDebugMode($debug);
         $this->initialize();
         $this->configure();
     }
 
-    protected function setDebugMode($debug)
+    /**
+     * デバッグモードの真偽値を見て情報の出しわけを行う
+     */
+    protected function setDebugMode(bool $debug )
     {
         if ($debug) {
             $this->debug = true;
