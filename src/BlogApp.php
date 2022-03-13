@@ -4,9 +4,9 @@ class BlogApp extends Application
 {
   protected $login_action = array( 'account', 'signin' );
 
-  public function getRootDir()
+  public function getRootDir(): string
   {
-    return dirname(__FILE__);
+    return dirname( __FILE__ );
   }
 
   public function registerRoutes()

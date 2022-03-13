@@ -30,8 +30,12 @@ class Router
     return $routes;
   }
 
-  public function resolve( $path_info )
+  /**
+   * @return array|false
+   */
+  public function resolve(string $path_info )
   {
+    // $path_infoに/が入っていない場合は/を付与する
     if ( '/' !== substr( $path_info, 0, 1 ) ) {
       $path_info = '/' . $path_info;
     }

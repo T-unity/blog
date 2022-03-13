@@ -6,7 +6,7 @@
 class Request
 {
   /**
-   * HTTPメソッドを判定する
+   * @return bool
    */
   public function isPost()
   {
@@ -68,6 +68,10 @@ class Request
     return false;
   }
 
+  /**
+   * スーパーグローバル変数$_SERVERに含まれるリクエストURIを返却する。
+   * @return string
+   */
   public function getRequestUri()
   {
     // $_SERVER["REQUEST_URI"]::ページにアクセスするために指定された URI。例えば、 '/index.html'
@@ -76,15 +80,20 @@ class Request
 
   /**
    * ホスト名以降の、特定のindex.phpまでのpathを特定する
+   *
+   * @return string
    */
   public function getBaseUrl()
   {
-    // $_SERVER["SCRIPT_NAME"]::現在のスクリプトのパス。 スクリプト自身のページを指定するのに有用です。
+    // $_SERVER["SCRIPT_NAME"]::現在のスクリプトのパス。
     $script_name = $_SERVER["SCRIPT_NAME"];
     $request_uri = $this->getRequestUri();
 
+    // $_SERVER["SCRIPT_NAME"] === $_SERVER[ 'REQUEST_URI' ]の場合、値を加工せずreturn
     if ( strpos( $request_uri, $script_name ) === 0 ) {
       return $script_name;
+
+    // 何らかの数値が返ってきた場合、文字列の最後から/を取り除いてreturn
     } elseif ( strpos( $request_uri, dirname( $script_name ) ) ) {
       return rtrim( dirname( $script_name ), '/' );
       // https://www.php.net/manual/ja/function.dirname.php
@@ -94,17 +103,17 @@ class Request
     return '';
   }
 
+  /**
+   * @return string
+   */
   public function getPathInfo()
   {
     $base_url = $this->getBaseUrl();
     $request_uri = $this->getRequestUri();
-    // GETメソッドで、?以降に付与されたクエリ
-    // $pos = strpos( $request_uri, '?' );
 
-    // if ( $pos !== false ) {
     if ( false !== ( $pos = strpos( $request_uri, '?' ) ) ) {
+      // クエリストリングの?以降を取り除く（GETパラメータを取り除く）
       $request_uri = substr( $request_uri, 0, $pos );
-      // https://www.php.net/manual/ja/function.strlen.php
     }
 
     $path_info = (string)substr( $request_uri, strlen($base_url) );
